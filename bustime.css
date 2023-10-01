@@ -1,0 +1,60 @@
+*{
+    margin: 0px;
+    list-style: none;
+    color: black;
+    text-decoration: none;
+    
+}
+body{
+    background-color: aliceblue;
+}
+nav{
+    background-color: #333;
+    padding: 20px;
+    
+    justify-content: space-between; /*logo left nav right*/
+}
+
+
+ul{
+    float: right;
+}
+
+
+li{
+    display: inline; /* เรียงกันแถวเดียว */
+}
+li a{
+    color: white;
+    padding: 20px;
+
+}
+
+ul li:nth-child(2) a{
+    color: aqua;
+}
+
+ul li:last-child a{
+    background-color: yellow;
+    padding: 7px;
+    color: black;
+    border-radius:5px ;
+}
+ul li:last-child:hover a{
+    background-color: red;
+}
+.top-con{
+    text-align: center;
+    background-color: wheat;
+    margin: auto;
+    width: 50%;
+}
+
+.container{
+    background-color: white;
+    color: aquamarine;
+    border:2px solid black;
+    margin: auto;
+    width: 50%;
+    margin-top: 50px;
+}

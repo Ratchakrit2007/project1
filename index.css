@@ -1,0 +1,102 @@
+*{
+    margin: 0px;
+    list-style: none;
+    color: black;
+    text-decoration: none;
+
+    
+}
+body{
+    background-image: url(image/traffic.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+}
+nav{
+    background-color: #333;
+    padding: 20px;
+    
+    justify-content: space-between; /*logo left nav right*/
+}
+
+
+ul{
+    float: right;
+}
+
+
+li{
+    display: inline; /* เรียงกันแถวเดียว */
+}
+li a{
+    color: white;
+    padding: 20px;
+
+}
+ul li:nth-child(1) a{
+    color: aqua;
+}
+
+
+.container{
+    background-color: white;
+    color: aquamarine;
+    border:1px solid black;
+    margin: auto;
+    width: 50%;
+    margin-top: 50px;
+}
+.con-layer{
+    display: flex;
+}
+.con-pic{
+    background-image: url(image/traffic.jpg)  ;
+    margin: 0px;
+    padding: 15%;
+}
+.con-but{
+   text-align: center;
+   width: 200%;
+   padding: 70px;
+
+}
+button{
+    margin: 7px;
+    width: 100%;
+    background-color: #fff000;
+    border-radius: 12px;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 200ms;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    font-size: 16px;
+
+}
+
+button:hover,button:focus {
+  outline: 0;
+  background: #f4e603;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+}
+
+.content{
+    padding-bottom: 40px;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+.c1{
+    background-color: white;
+    margin: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: auto;
+    width: 400px;
+    display: inline-block;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
