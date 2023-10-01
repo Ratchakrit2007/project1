@@ -7,13 +7,6 @@
     <link rel="stylesheet" href="login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-    function confirmDelete() { // ฟังก์ชนจะถูกเรียกถ้าผู้ใช ั คลิกที่ ้ link ลบ
-        var ans = confirm("ข้อมูลซ้ำ"); // แสดงกล่องถามผู้ใช ้
-        if (ans == true) // ถ้าผู้ใชกด ้ OK จะเข ้าเงื่อนไขนี้
-            document.location = "register.php"; // สงรหัสส ่ นค ้าไปให ้ไฟล์ ิ delete.php
-    }
-    </script>
 </head>
 
 <body>
@@ -28,7 +21,7 @@
 
 
 
-
+    
     <?php
             
 
@@ -51,54 +44,20 @@
                 $stmt->execute(); // เริ่มค้นหา
                 
                 
-                    if($row){
-                            // ข้อมูลการเข้าสู่ระบบถูกต้อง กําหนดให้เปลี่ยนเส้นทางไปที่ tickets.php พร้อมพามี cus_id เป็นพารามิเตอร์ใน URL
-                        $cus_id = $row['cus_id'];
-                        header("Location: test1.php");
+                    if($row = $stmt->fetch()){
+                        // ข้อมูลซ้ำจะอยู่หน้าเดิม
+                        echo "<script>alert('ข้อมูลซ้ำ')</script>";
+                        // confirm("ข้อมูลซ้ำ");
+                        // header("Location: register.php");
                     }else{
-                        
                         header("Location: insertuser.php?fname=".$fname."&lname=".$lname."&pass=".$pass."&email=".$email."&phone=".$phone);
+                        
                     }
                 
 
             }
             ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
     <!-- <script>
