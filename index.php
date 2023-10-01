@@ -14,7 +14,7 @@
                 <li><a href="#">หน้าแรก</a></li>
                 <li><a href="#">จุดจอดรับส่ง</a></li>
                 <li><a href="contact.php">ติดต่อเรา</a></li>
-                <li><a href="tickets.php">จองตั๋ว</a></li>
+                <li><a href="tickets.php?cus_id=<?= $_GET['cus_id'] ?>">จองตั๋ว</a></li>
             </ul>
         </nav>
 
@@ -22,7 +22,7 @@
             <div class="con-layer">
                 <div class="con-pic"></div>
                 <div class="con-but">
-                    <a href="tickets.php"><button>จองตั๋ว คลิ้กเลย</button></a><br>
+                    <a href="tickets.php?cus_id=<?= $_GET['cus_id'] ?>"><button>จองตั๋ว คลิ้กเลย</button></a><br>
                     <button><a href="#">จุดจอด คลิ้กเลย</a></button>
                 </div>
             </div>

@@ -13,6 +13,8 @@
         รหัส<input type="pass" name="keyword2"></input>
         <input type="submit" value="login">
     </form>
+    <a href="register.php"><input type="submit" value="register"></a>
+    
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $phone = $_POST["keyword1"];
@@ -27,7 +29,7 @@
             if($row){
                     // ข้อมูลการเข้าสู่ระบบถูกต้อง กําหนดให้เปลี่ยนเส้นทางไปที่ tickets.php พร้อมพามี cus_id เป็นพารามิเตอร์ใน URL
                 $cus_id = $row['cus_id'];
-                    header("Location: tickets.php?cus_id=" . $cus_id);
+                    header("Location: index.php?cus_id=" . $cus_id);
             }
         }
                

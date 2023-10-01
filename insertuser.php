@@ -9,7 +9,7 @@
     $stmt->bindParam(5, $_GET["phone"]);
     $stmt->execute(); // เริ่มเพิ่มข้อมูล
     $cus_id = $pdo->lastInsertId();
-    header("location: tickets.php?cus_id=" . $cus_id);
+    header("location: login.php");
 ?>
 <html>
 <head><meta charset="UTF-8"></head>
