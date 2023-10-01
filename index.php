@@ -8,16 +8,34 @@
     <title>Rayongtransport</title>
 </head>
 <body>
+
         <nav>
             <a href="#">Logo</a>
-            <ul>   
+            <ul id="u">   
                 <li><a href="#">หน้าแรก</a></li>
                 <li><a href="#">จุดจอดรับส่ง</a></li>
                 <li><a href="contact.php">ติดต่อเรา</a></li>
                 <li><a href="tickets.php?cus_id=<?= $_GET['cus_id'] ?>">จองตั๋ว</a></li>
             </ul>
         </nav>
+<script>
+        window.onload =  function add() {
+            var id = <?=$_GET['cus_id']?>;
+            var u = document.getElementById("u");
+            var li = document.createElement("li");
+            var a = document.createElement("a");
 
+            a.href = 'register.php'; // กำหนด href สำหรับลิงก์
+            a.textContent = 'admin'; // กำหนดข้อความของลิงก์
+
+            li.appendChild(a); // เพิ่มอีลิเมนต์ <a> เข้าไปใน <li>
+            
+            if (id === 15) {
+                u.appendChild(li); // เพิ่ม <li> เข้าไปใน <ul>
+            }
+        }
+        
+    </script>
         <div class="container">
             <div class="con-layer">
                 <div class="con-pic"></div>
