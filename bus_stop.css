@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    list-style: none;
+    color: black;
+    text-decoration: none;
+
+}
+header{
+    background-color: #333;
+    padding: 20px;
+
+    justify-content: space-between; /*logo left nav right*/
+}
+
+nav{
+    text-align: center;
+    margin: auto;
+    padding: 60px;
+    font-size: 35px;
+    background-color: rgb(56, 56, 56);
+}
+nav h1{
+    color: goldenrod;
+}
+nav h3{
+    color: white;
+    margin-top: 15px;
+}
+
+header ul{
+    float: right;
+}
+
+header li{
+    display: inline; /* เรียงกันแถวเดียว */
+}
+header li a{
+    color: white;
+    padding: 20px;
+}
+
+header ul li:nth-child(2) a{
+    color: aqua;
+}
+
+header ul li:last-child a{
+    background-color: yellow;
+    padding: 7px;
+    color: black;
+    border-radius:5px ;
+}
+header ul li:last-child:hover a{
+    background-color: red;
+}
+
+section ul{
+    text-align: center;
+    height: 230px;
+    padding-top: 2rem;
+    background-color: rgb(141, 141, 141);
+}
+section ul li{
+    display: inline-block;
+    margin: 1rem;
+    padding: 15px;
+    background-color: goldenrod;
+    border-radius: 10%;
+}
+
+article h1{
+    text-align: center;
+    margin: auto;
+    padding: 30px;
+    font-size: 35px;
+}
+article>img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 5px 10px #dcdcdc;
+    margin-bottom: 60px;
+}
+
+.grid{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 150px;
+    width: 80%;
+    grid-template-columns: auto auto;
+    align-content: center;
+    color: white;
+    margin-bottom: 60px;
+} 
+/* article div div div{
+    align-content: center;
+    color: #dcdcdc;
+} */
+.img_tool{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
+    height: 120px;
+}

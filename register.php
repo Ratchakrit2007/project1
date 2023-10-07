@@ -3,6 +3,9 @@
 <html lang="en">
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +13,21 @@
 </head>
 
 <body>
-    <form action="" method="post">
-        fname :<input type="text" name="fname" id="fname"><br>
-        lname :<input type="text" name="lname" id="lname"><br>
-        pass :<input type="text" name="pass"><br>
-        email :<input type="text" name="email"><br>
-        phone :<input type="text" name="phone"><br>
-        <input type='submit' value='สมัครสมาชิก'>
-    </form>
+    <div>
+        <form action="" method="post">
+            fname :<input type="text" name="fname" id="fname"><br>
+            lname :<input type="text" name="lname" id="lname"><br>
+            pass :<input type="text" name="pass"><br>
+            email :<input type="text" name="email"><br>
+            phone :<input type="text" name="phone"><br>
+            <input type='submit' value='สมัครสมาชิก'>
+        </form>
+        <a href="login.php"><input type="submit" value="login"></a>
+    </div>
 
 
 
-    
+
     <?php
             
 
@@ -35,18 +41,18 @@
                 $phone = $_POST["phone"];
 
                 // เขียนคำสั่ง SQL เพื่อเพิ่มข้อมูลผู้ใช้
-                $stmt = $pdo->prepare("SELECT * FROM customers where fname=? AND lname=? AND pass=? AND email=? AND phone=?");
-                $stmt->bindParam(1, $fname);
-                $stmt->bindParam(2, $lname);
-                $stmt->bindParam(3, $pass);
-                $stmt->bindParam(4, $email);
-                $stmt->bindParam(5, $phone);
+                $stmt = $pdo->prepare("SELECT * FROM customers where phone=?");
+                // $stmt->bindParam(1, $fname);
+                // $stmt->bindParam(2, $lname);
+                // $stmt->bindParam(3, $pass);
+                // $stmt->bindParam(4, $email);
+                $stmt->bindParam(1, $phone);
                 $stmt->execute(); // เริ่มค้นหา
                 
                 
                     if($row = $stmt->fetch()){
                         // ข้อมูลซ้ำจะอยู่หน้าเดิม
-                        echo "<script>alert('ข้อมูลซ้ำ')</script>";
+                        echo "<script>alert('เบอร์โทรถูกใช้ไปแล้ว')</script>";
                         // confirm("ข้อมูลซ้ำ");
                         // header("Location: register.php");
                     }else{
@@ -57,7 +63,7 @@
 
             }
             ?>
-        
+
 
 
     <!-- <script>

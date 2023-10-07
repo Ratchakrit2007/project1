@@ -9,7 +9,7 @@
     $stmt->execute(); // เริ่มเพิ่มข้อมูล
     
     
-    header("location: bustime.php?ticket_id=".$_GET["ticket_id"]);
+    header("location: seat.php?ticket_id=".$_GET["ticket_id"]);
 ?>
 <html>
 <head><meta charset="UTF-8"></head>

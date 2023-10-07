@@ -1,0 +1,85 @@
+*{
+    margin: 0px;
+    list-style: none;
+    
+    text-decoration: none;
+    font-family: 'Kanit', sans-serif;
+    
+}
+
+body{
+    background-image: url(image/traffic.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%;
+}
+
+
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 980px) {
+    h1 {
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (min-width: 981px) {
+    h1 {
+        font-size: 24px;
+    }
+    nav{
+        background-color: #4d4d4d;
+        padding: 20px;
+     
+        justify-content: space-between; /*logo left nav right*/
+    }
+    
+    
+    ul{
+        float: right;
+    }
+    
+    
+    li{
+        display: inline; /* เรียงกันแถวเดียว */
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    ul li:nth-child(1) a{
+        color: aqua;
+    }
+    .layer{
+        display: flex;
+    }
+    .ticket2{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 10px;
+        margin: auto;
+        margin-right: 40px;
+        padding:20px;
+        width: 30%;
+        margin-top: 50px;
+    }
+    .prom{
+        background-color: #b3b3b3e5;
+        border:1px solid black;
+        border-radius: 10px;
+        margin: auto;
+        margin-left: 0px;
+        padding:20px;
+        width: 300px;
+        margin-top: 50px; 
+        text-align: center;
+    }
+}

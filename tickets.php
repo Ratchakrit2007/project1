@@ -1,173 +1,191 @@
-<?php include "db.php"; ?>
+<?php 
+session_start();
+include ("db2.php");
+if(!isset($_SESSION['userid'])){
+    header("location:index.php");
+}else{
+    $sql = mysqli_query($dbcon,"SELECT * FROM customers WHERE cus_id='" . $_SESSION['userid'] . "'");
+    $row = mysqli_fetch_array($sql);
+
+   
+    //echo $row['cus_id'];
+    // echo $row['phone'];
+    // echo $row['cus_id'];
+    // echo $row['fname'];
+    // echo $_SESSION['userid'];
+ 
+    
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="tickets.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="tickets.css">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
 </head>
-<body>
 
+<body>
     <nav>
-        <a href="#">Logo</a>
-        <ul>   
+        <a href="#" style="color: white;">RayongTransport</a>
+        <ul>
+            User : <?= $row['fname']; ?>
             <li><a href="index.php">หน้าหลัก</a></li>
             <li><a href="#">ซื้อตั๋ว</a></li>
-            <li><a href="register.php">เข้าสู่ระบบ/สมัครสมาชิก</a></li>
+            <li><a href="logout.php">ออกจากระบบ</a></li>
         </ul>
     </nav><br><br><br>
 
-    <div class="top-con"> 
-        <span>&#8226 ค้นหา</span> -------- <span>&#8226 เที่ยวรถ</span> -------- 
-        <span>&#8226 ที่นั่ง</span> -------- 
-        <span>&#8226 ชำระเงิน</span> 
-    </div><br><br>
+
+
 
     <div class="container"><br>
-        <form action="ticket2.php?cus_id=<?= $_GET['cus_id'] ?>" method="POST">  
+        <b style="color: white; background-color:red;border-radius:10px ;">ค้นหา</b> <br><br>
+
+        <form action="ticket2.php" method="POST" >
             <label for="picklocation">จาก:</label>
             <select id="picklocation" name="location_id">
                 <option value="">กรุณาเลือก</option>
                 <?php 
-                $stmt = $pdo->prepare("SELECT * FROM pickuplocation");
-                $stmt->execute();
-                while ($row = $stmt->fetch()) { 
-                    ?>
-                    <option value="<?php echo $row['location_id']?>"><?php echo $row['location_name'] ?></option>
-                    <?php
-                } ?>
+                    $sql = mysqli_query($dbcon, "SELECT * FROM pickuplocation");
+                    while ($row = mysqli_fetch_array($sql)) {
+                        echo '<option value="' . $row['location_id'] . '">' . $row['location_name'] . '</option>';
+                    }
+                 ?>
             </select>
-
 
             <label for="deslocation">จุดขึ้นรถ:</label>
             <select id="deslocation" name="des_id">
                 <option value="">กรุณาเลือก</option>
             </select><br><br>
 
+            <script>
+            document.getElementById('picklocation').addEventListener('change', function() {
+                var pickLocationId = this.value;
+                var desLocationSelect = document.getElementById('deslocation');
+
+                // รีเซ็ต option
+                desLocationSelect.innerHTML = '<option value="">กรุณาเลือก</option>';
+
+                if (pickLocationId === '1') {
+                    // ถ้า picklocation เท่ากับ 1
+                    <?php
+                        $sql1 = mysqli_query($dbcon, "SELECT * FROM destinations WHERE des_id = 4");
+                        while ($row = mysqli_fetch_array($sql1)) {
+                            echo 'desLocationSelect.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
+                        }
+                    ?>
+                } else { //ถ้าไม่ใช่ 1 
+                    <?php
+                        $sql1 = mysqli_query($dbcon, "SELECT * FROM destinations WHERE des_id IN(1,2,3)"); //แสดง location ที่เหลือ
+                        while ($row = mysqli_fetch_array($sql1)) {
+                            echo 'desLocationSelect.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
+                        }
+                    ?>
+
+                }
+
+            });
+            </script>
+
+
+
+
 
             <label for="des">ถึง:</label>
-            <select id="des" name="location_id">
+            <select id="des" name="deslocation_id">
                 <option value="">กรุณาเลือก</option>
+
             </select>
+            <script>
+            document.getElementById('picklocation').addEventListener('change', function() {
+                var pickLocationId = this.value;
+                var desLocationSelect = document.getElementById('des');
+
+                // รีเซ็ต option
+                desLocationSelect.innerHTML = '<option value="">กรุณาเลือก</option>';
+
+                if (pickLocationId === '1') {
+                    // ถ้า picklocation เท่ากับ 1
+                    <?php
+                        $sql1 = mysqli_query($dbcon, "SELECT * FROM pickuplocation WHERE location_id = 2");
+                        while ($row = mysqli_fetch_array($sql1)) {
+                            echo 'desLocationSelect.innerHTML += \'<option value="' . $row['location_id'] . '">' . $row['location_name'] . '</option>\';';
+                        }
+                    ?>
+                } else { //ถ้าไม่ใช่ 1 
+                    <?php
+                        $sql1 = mysqli_query($dbcon, "SELECT * FROM pickuplocation WHERE location_id =1");
+                        while ($row = mysqli_fetch_array($sql1)) {
+                            echo 'desLocationSelect.innerHTML += \'<option value="' . $row['location_id'] . '">' . $row['location_name'] . '</option>\';';
+                        }
+                    ?>
+
+                }
+
+            });
+            </script>
 
             <label for="deslocation2">จุดลงรถ:</label>
             <select id="deslocation2" name="des_id">
                 <option value="">กรุณาเลือก</option>
             </select><br><br>
+            <script>
+            document.getElementById('picklocation').addEventListener('change', function() {
+                var pickLocationId = this.value;
+                var desLocationSelect = document.getElementById('deslocation2');
+
+                // รีเซ็ต option
+                desLocationSelect.innerHTML = '<option value="">กรุณาเลือก</option>';
+
+                if (pickLocationId === '1') {
+                    // ถ้า picklocation เท่ากับ 1
+                    <?php
+                        $sql1 = mysqli_query($dbcon, "SELECT * FROM destinations WHERE des_id IN(1,2,3)");
+                        while ($row = mysqli_fetch_array($sql1)) {
+                            echo 'desLocationSelect.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
+                        }
+                    ?>
+                } else { //ถ้าไม่ใช่ 1 
+                    <?php
+                        $sql1 = mysqli_query($dbcon, "SELECT * FROM destinations WHERE des_id = 4 ");
+                        while ($row = mysqli_fetch_array($sql1)) {
+                            echo 'desLocationSelect.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
+                        }
+                    ?>
+
+                }
+
+            });
+            </script>
 
             <label for="time">เที่ยวไป:</label>
             <input type="date" id="time" name="depart_date"></input>
-                
 
 
-            <br><input type="submit" value="ค้นหา">
+
+            <br><br><input type="submit" value="ค้นหา">
         </form><br>
     </div>
 
-   
-    <script> //for จุดขึ้นรถ
-        document.getElementById('picklocation').addEventListener('change', function () {
-            var pickLocationId = this.value;
-            var desLocationSelect = document.getElementById('deslocation');
-            console.log(pickLocationId); //ค่า id ที่เป็น 1 หรือ 2 
-        
-            // รีช่อง จุดขึ้นรถ
-            desLocationSelect.innerHTML = '<option value="">กรุณาเลือก</option>';
-            
-            
-            if (pickLocationId === '1') {
-                // locationid = 1
-                <?php
-                $query1 = $pdo->prepare("SELECT * FROM destinations WHERE des_id = 4;");
-                $query1->execute();
-                while ($row = $query1->fetch()) {
-                    echo 'desLocationSelect.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
-                }
-                ?>
-            } else {
-                //  locationid != 1
-                <?php
-                $query2 = $pdo->prepare("SELECT * FROM destinations WHERE des_id IN (1, 2, 3);");
-                $query2->execute();
-                while ($row = $query2->fetch()) {
-                    echo 'desLocationSelect.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
-                }
-                ?>
-            }
-        });
-    </script>
 
 
-    <script> //for ถึง
-        document.getElementById('picklocation').addEventListener('change', function () {
-            var desLocationId = this.value;
-            var des1 = document.getElementById('des');
-            console.log(desLocationId); //ค่า id ที่เป็น 1 หรือ 2 
-        
-            // รีช่อง จุดขึ้นรถ
-            des1.innerHTML = '<option value="">กรุณาเลือก</option>';
-            
-            
-            if (desLocationId === '1') {
-                // locationid= 1
-                <?php
-                $query1 = $pdo->prepare("SELECT * FROM pickuplocation WHERE location_id = 2;");
-                $query1->execute();
-                while ($row = $query1->fetch()) {
-                    echo 'des1.innerHTML += \'<option value="' . $row['location_id'] . '">' . $row['location_name'] . '</option>\';';
-                }
-                ?>
-            } else {
-                //  locationid != 1
-                <?php
-                $query2 = $pdo->prepare("SELECT * FROM pickuplocation WHERE location_id = 1;");
-                $query2->execute();
-                while ($row = $query2->fetch()) {
-                    echo 'des1.innerHTML += \'<option value="' . $row['location_id'] . '">' . $row['location_name'] . '</option>\';';
-                }
-                ?>
-            }
-        });
-    </script>
 
-<script> //for ถึง
-        document.getElementById('picklocation').addEventListener('change', function () {
-            var desLocationId2 = this.value;
-            var des2 = document.getElementById('deslocation2');
-            console.log(desLocationId2); //ค่า id ที่เป็น 1 หรือ 2 
-        
-            // รีช่อง จุดขึ้นรถ
-            des2.innerHTML = '<option value="">กรุณาเลือก</option>';
-            
-            
-            if (desLocationId2 === '1') {
-                // locationid= 1
-                <?php
-                $query1 = $pdo->prepare("SELECT * FROM destinations WHERE des_id IN (1, 2, 3);");
-                $query1->execute();
-                while ($row = $query1->fetch()) {
-                    echo 'des2.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
-                }
-                ?>
-            } else {
-                //  locationid != 1
-                <?php
-                $query2 = $pdo->prepare("SELECT * FROM destinations WHERE des_id =4;");
-                $query2->execute();
-                while ($row = $query2->fetch()) {
-                    echo 'des2.innerHTML += \'<option value="' . $row['des_id'] . '">' . $row['des_name'] . '</option>\';';
-                }
-                ?>
-            }
-        });
-    </script>
 
-        
+
+
+
 
 
 
 </body>
+
 </html>
+<?php } ?>
