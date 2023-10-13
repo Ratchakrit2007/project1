@@ -2,7 +2,7 @@
     margin: 0px;
     list-style: none;
     
-    text-decoration: none;
+    text-decoration-line: none !important;
     font-family: 'Kanit', sans-serif;
     
 }
@@ -15,31 +15,147 @@ body{
 }
 
 
+ul li:last-child a {
+        
+    background-color: yellow;
+    padding: 7px;
+    color: black;
+    border-radius: 5px;
+    margin-top: 20px;
+    
+}
+ul li:last-child:hover a {
+    background-color: red;
+}
+
+
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 18px;
+    nav{
+        background-color: #4d4d4d;
+      
+    }
+    ul,ul>a{
+        text-align: center ;
+        
+    }
+    ul{
+        padding: 0px;
+        padding-bottom: 10px;
+    }
+    
+    li{
+        display: block; /* เรียงกันแถวเดียว */
+        
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    ul li:last-child{
+        
+      
+        margin-top: 10px;
+        
+        
+    }
+    .layer{
+        display: block;
+    }
+    .ticket2{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 10px;
+        margin: auto;
+        
+        padding:20px;
+        width: 50%;
+        margin-top: 50px;
+    }
+    .prom{
+        background-color: #b3b3b3e5;
+        border:1px solid #000000;
+        border-radius: 10px;
+        margin: auto;
+        
+        padding:20px;
+        width: 300px;
+        margin-top: 50px; 
+        text-align: center;
     }
 }
 
 @media screen and (min-width: 481px) and (max-width: 980px) {
-    h1 {
-        font-size: 20px;
+    nav{
+        background-color: #4d4d4d;
+      
+    }
+    ul,ul>a{
+        text-align: center ;
+        
+    }
+    ul{
+        padding: 0px;
+        padding-bottom: 10px;
+    }
+    
+    li{
+        display: block; /* เรียงกันแถวเดียว */
+        
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    ul li:last-child{
+        
+      
+        margin-top: 10px;
+        
+        
+    }
+    .layer{
+        display: block;
+    }
+    .ticket2{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 10px;
+        margin: auto;
+        
+        padding:20px;
+        width: 50%;
+        margin-top: 50px;
+    }
+    .prom{
+        background-color: #b3b3b3e5;
+        border:1px solid #000000;
+        border-radius: 10px;
+        margin: auto;
+        
+        padding:20px;
+        width: 300px;
+        margin-top: 50px; 
+        text-align: center;
     }
 }
 
 
 @media screen and (min-width: 981px) {
-    h1 {
-        font-size: 24px;
-    }
+    
     nav{
         background-color: #4d4d4d;
         padding: 20px;
-     
+        width: 100%;
         justify-content: space-between; /*logo left nav right*/
+        
     }
-    
     
     ul{
         float: right;
@@ -55,9 +171,7 @@ body{
     
     
     }
-    ul li:nth-child(1) a{
-        color: aqua;
-    }
+    
     .layer{
         display: flex;
     }

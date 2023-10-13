@@ -13,112 +13,339 @@ body{
     background-attachment: fixed; 
     background-size: 100% 100%;
 }
-nav{
-    background-color: #4d4d4d;
-    padding: 20px;
- 
-    justify-content: space-between; /*logo left nav right*/
-}
 
-
-ul{
-    float: right;
-}
-
-
-li{
-    display: inline; /* เรียงกันแถวเดียว */
-}
-li a{
-    color: white;
-    padding: 20px;
-
-
-}
-ul li:nth-child(1) a{
-    color: aqua;
-}
-
-
-.container{
-    background-color: #888888e5;
-    border:1px solid black;
-    border-radius: 20px;
-    margin: auto;
-    width: 50%;
-    margin-top: 50px;
-}
-.ticket2{
-    background-color: #888888e5;
-    border:1px solid black;
-    border-radius: 10px;
-    margin: auto;
-    padding:20px;
-    width: 50%;
-    margin-top: 50px;
-}
-.con-layer{
-    display: flex;
-    
-}
-.con-pic{
-    background-image: url(image/Rayong.png ) ;
-    margin: 0px;
-    padding: 15%;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-.con-but{
-   text-align: center;
-   width: 200%;
-   padding: 70px;
-
-}
-button{
-    margin: 7px;
-    width: 100%;
-    background-color: #fff000;
-    border-radius: 12px;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 10px 15px;
-    text-align: center;
-    transition: 200ms;
-    width: 100%;
-    box-sizing: border-box;
-    border: 0;
-    font-size: 16px;
-
-}
-
-button:hover,button:focus {
-  outline: 0;
-  background: #f4e603;
-  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
-}
-
-.content{
-    padding-bottom: 40px;
-    text-align: center;
-    margin-top: 60px;
-    
-  }
-
-.c1{
-    background-color: #888888e5;
-    color: white;
-    margin: 30px;
-    border: 1px solid black;
-    padding: 100px ;
+ul li.li1:nth-child(1) a{
+        color: aqua;
+    }
+ul li.li2:nth-child(2) a{
+        color: aqua;
+    }
+ul li:last-child a {
+        
+    background-color: yellow;
+    padding: 7px;
+    color: black;
     border-radius: 5px;
-    height: auto;
-    width: 400px;
-    display: inline-block;
+    margin-top: 20px;
+    
 }
+ul li:last-child:hover a {
+    background-color: red;
+}
+
+
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 18px;
+    
+    div.nav{
+        background-color: #4d4d4d;
+    }
+    ul,ul>a{
+        text-align: center;
+        
+    }
+    ul{
+        padding: 0px;
+    }
+    
+    
+    li{
+        display: block; /* เรียงกันแถวเดียว */
+        
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    ul li:last-child{
+        margin-top: 10px;
+    }
+    
+    
+    .container{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 20px;
+        margin: 30px;
+        width: auto;
+        margin-top: 50px;
+    }
+    .ticket2{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 10px;
+        
+        margin: auto;
+        padding:20px;
+        width: 50%;
+        margin-top: 50px;
+    }
+    .con-layer{
+        display: block;
+        
+    }
+    .con-pic{
+        background-image: url(image/Rayong.png ) ;
+        margin: 0px;
+        padding: 15%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .con-but{
+       text-align: center;
+       width: auto;
+       padding: 20px;
+    
+    }
+    button{
+        margin: 7px;
+        width: 100%;
+        background-color: #fff000;
+        border-radius: 12px;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 15px;
+        text-align: center;
+        transition: 200ms;
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        font-size: 16px;
+    
+    }
+    
+    button:hover,button:focus {
+      outline: 0;
+      background: #f4e603;
+      box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+    }
+    
+    .content{
+        padding-bottom: 40px;
+        text-align: center;
+        margin-top: 60px;
+        
+      }
+    
+    .c1{
+        background-color: #888888e5;
+        color: white;
+        margin: 30px;
+        border: 1px solid black;
+        padding: 20px;
+        border-radius: 5px;
+        height: auto;
+        width: auto;
+        display: inline-block;
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 980px) {
+    div.nav{
+        background-color: #4d4d4d;
+    }
+    ul,ul>a{
+        text-align: center;
+        
+    }
+    ul{
+        padding: 0px;
+    }
+    
+    li{
+        display: block; /* เรียงกันแถวเดียว */
+        
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    ul li:last-child{
+        margin-top: 10px;
+    }
+    
+    .container{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 20px;
+        margin: 30px;
+        width: auto;
+        margin-top: 50px;
+    }
+    .ticket2{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 10px;
+        
+        margin: auto;
+        padding:20px;
+        width: 50%;
+        margin-top: 50px;
+    }
+    .con-layer{
+        display: block;
+        
+    }
+    .con-pic{
+        background-image: url(image/Rayong.png ) ;
+        margin: 0px;
+        padding: 15%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .con-but{
+       text-align: center;
+       width: auto;
+       padding: 20px;
+    
+    }
+    button{
+        margin: 7px;
+        width: 100%;
+        background-color: #fff000;
+        border-radius: 12px;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 15px;
+        text-align: center;
+        transition: 200ms;
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        font-size: 16px;
+    
+    }
+    
+    button:hover,button:focus {
+      outline: 0;
+      background: #f4e603;
+      box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+    }
+    
+    .content{
+        padding-bottom: 40px;
+        text-align: center;
+        margin-top: 60px;
+        
+      }
+    
+    .c1{
+        background-color: #888888e5;
+        color: white;
+        margin: 30px;
+        border: 1px solid black;
+        padding: 50px ;
+        border-radius: 5px;
+        height: auto;
+        width: auto;
+        display: inline-block;
+    }
+}
+@media screen and (min-width: 981px) {
+    nav{
+        background-color: #4d4d4d;
+        padding: 20px;
+     
+        justify-content: space-between; /*logo left nav right*/
+    }
+    ul{
+        float: right;
+    }
+    
+    
+    li{
+        display: inline; /* เรียงกันแถวเดียว */
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    
+    
+    .container{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 20px;
+        margin: auto;
+        width: 50%;
+        margin-top: 50px;
+    }
+    .ticket2{
+        background-color: #888888e5;
+        border:1px solid black;
+        border-radius: 10px;
+        margin: auto;
+        padding:20px;
+        width: 50%;
+        margin-top: 50px;
+    }
+    .con-layer{
+        display: flex;
+        
+    }
+    .con-pic{
+        background-image: url(image/Rayong.png ) ;
+        margin: 0px;
+        padding: 15%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .con-but{
+       text-align: center;
+       width: 200%;
+       padding: 70px;
+    
+    }
+    button{
+        margin: 7px;
+        width: 100%;
+        background-color: #fff000;
+        border-radius: 12px;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 15px;
+        text-align: center;
+        transition: 200ms;
+        width: 100%;
+        box-sizing: border-box;
+        border: 0;
+        font-size: 16px;
+    
+    }
+    
+    button:hover,button:focus {
+      outline: 0;
+      background: #f4e603;
+      box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+    }
+    
+    .content{
+        padding-bottom: 40px;
+        text-align: center;
+        margin-top: 60px;
+        
+      }
+    
+    .c1{
+        background-color: #888888e5;
+        color: white;
+        margin: 30px;
+        border: 1px solid black;
+        padding: 100px ;
+        border-radius: 5px;
+        height: auto;
+        width: 400px;
+        display: inline-block;
     }
 }

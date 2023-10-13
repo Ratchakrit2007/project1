@@ -13,42 +13,21 @@ body {
     background-size: 100% 100%;
 }
 
-nav {
-    background-color: #333;
-    padding: 20px;
-    justify-content: space-between;
-    /*logo left nav right*/
-}
 
-
-
-ul {
-    float: right;
-    
-}
-
-
-li {
-    display: inline;
-    /* เรียงกันแถวเดียว */
-}
-
-li a {
-    color: white;
-    padding: 20px;
-
-}
 
 ul li:nth-child(2) a {
     color: aqua;
 }
-
 ul li:last-child a {
+        
     background-color: yellow;
     padding: 7px;
     color: black;
     border-radius: 5px;
+    margin-top: 20px;
+    
 }
+
 
 ul li:last-child:hover a {
     background-color: red;
@@ -62,4 +41,97 @@ ul li:last-child:hover a {
     margin: auto;
     width: 50%;
     margin-top: 50px;
+}
+
+
+@media screen and (max-width: 480px) {
+    div.nav{
+        background-color: #4d4d4d;
+    }
+    ul,ul>a{
+        text-align: center;
+        
+    }
+    ul{
+        padding: 0px;
+    }
+    
+    li{
+        display: block; /* เรียงกันแถวเดียว */
+        
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    ul li:last-child{
+        
+      
+        margin-top: 10px;
+        
+    }
+    
+}
+@media screen and (min-width: 481px) and (max-width: 980px) {
+    div.nav{
+        background-color: #4d4d4d;
+    }
+    ul,ul>a{
+        text-align: center;
+        
+    }
+    ul{
+        padding: 0px;
+    }
+    
+    li{
+        display: block; /* เรียงกันแถวเดียว */
+        
+    }
+    li a{
+        color: white;
+        padding: 20px;
+    
+    
+    }
+    
+    ul li:last-child{
+        
+      
+        margin-top: 10px;
+        
+    }
+}
+
+@media screen and (min-width: 981px) {
+    nav {
+        background-color: #4d4d4d;
+        padding: 20px;
+        justify-content: space-between;
+        /*logo left nav right*/
+    }
+    
+    
+    
+    ul {
+        float: right;
+        
+    }
+    
+    
+    li {
+        display: inline;
+        /* เรียงกันแถวเดียว */
+    }
+    
+    li a {
+        color: white;
+        padding: 20px;
+    
+    }
+
+    
 }

@@ -35,19 +35,21 @@
 </head>
 
 <body>
-    <nav>
-        <a href="#" style="color: white;">RayongTransport</a>
-        
-        <ul id="u">
-              User : <?= $row['fname']; ?>
-            <li><a href="#">หน้าแรก</a></li>
-            <li><a href="bus_stop.php">จุดจอดรับส่ง</a></li>
+    <div class="nav">
+        <nav>
+            <a href="#" style="color: white;">RayongTransport</a>
             
-            <!--<li><a href="contact.php">ติดต่อเรา</a></li> -->
-            <li><a href="tickets.php">จองตั๋ว</a></li>
-            <li><a href="logout.php">ออกจากระบบ</a></li>
-        </ul>
-    </nav>
+            <ul id="u">
+                User : <?= $row['fname']; ?>
+                <li class="li1"><a href="#">หน้าแรก</a></li>
+                <li><a href="bus_stop.php">จุดจอดรับส่ง</a></li>
+                
+                <!--<li><a href="contact.php">ติดต่อเรา</a></li> -->
+                <li><a href="tickets.php">จองตั๋ว</a></li>
+                <li><a href="logout.php">ออกจากระบบ</a></li>
+            </ul>
+        </nav><br>
+    </div>
     <script>
     window.onload = function add() {
         var id = <?=$row['cus_id']?>;

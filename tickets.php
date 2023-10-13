@@ -33,16 +33,17 @@ if(!isset($_SESSION['userid'])){
 </head>
 
 <body>
-    <nav>
-        <a href="#" style="color: white;">RayongTransport</a>
-        <ul>
-            User : <?= $row['fname']; ?>
-            <li><a href="index.php">หน้าหลัก</a></li>
-            <li><a href="#">ซื้อตั๋ว</a></li>
-            <li><a href="logout.php">ออกจากระบบ</a></li>
-        </ul>
-    </nav><br><br><br>
-
+    <div class="nav">
+        <nav>
+            <a href="#" style="color: white;">RayongTransport</a>
+            <ul>
+                User : <?= $row['fname']; ?>
+                <li><a href="index.php">หน้าหลัก</a></li>
+                <li><a href="#">ซื้อตั๋ว</a></li>
+                <li><a href="logout.php">ออกจากระบบ</a></li>
+            </ul>
+        </nav><br>
+    </div>
 
 
 
