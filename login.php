@@ -71,7 +71,7 @@ if (isset($_POST['submit'])){  //เมื่อกด submit จะทำอะ
 </head>
 
 <body>
-    <div>
+    <div class="log">
         <form method="POST">
 
             เบอร์โทรศัพท์<input type="text"

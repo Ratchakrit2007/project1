@@ -1,38 +1,37 @@
-<?php include "db.php"; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body{
-            background-color:#DAFFFB;
-            text-align:center;
-        }
-        input{
-            background-color: #64CCC5; 
-            border: 1px solid black;
-            color: white;
-            padding: 15px 32px;
-            margin:10px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        h1{
-            color:#176B87;
-        }
-    </style>
-</head>
-<body>
-    <h1><b>admin</b></h1>
-    <a href="addtime.php"><input type="submit" value="แก้ไขเวลารถแต่ละวัน"></a><br>
-    <a href="query1.php"><input type="submit" value="query จำนวนที่รถถูกจองไปแล้วกี่ครั้ง (รถที่ถูกใช้งานมากที่สุด)"></a><br> 
-    <a href="query2.php"><input type="submit" value="query จำนวนจุดที่ลูกค้าลงไป ทั้งหมดกี่ครั้ง ?"></a><br>
-    <a href="query3.php"><input type="submit" value="query รายการลูกค้าคนไหนที่ทำรายการไปแล้วทั้งหมดกี่ครั้ง "></a><br>
-    <a href="login.php"><input type='submit' value="exit"></a>
-</body>
-</html>
+<?php
+session_start();
+include("db2.php");
+if (!isset($_SESSION['userid']  )) {
+    header("location:login.php");
+}else if ($_SESSION['userid'] == 15 || $_SESSION['userid'] == 78 || $_SESSION['userid'] == 79){  ;?>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="admin.css">
+    </head>
+
+    <body>
+        <h1><b>Admin</b></h1>
+        <a href="addtime.php"><input type="submit" value="แก้ไขเวลารถแต่ละวัน"></a><br>
+        <a href="query1.php"><input type="submit" value="query จำนวนที่รถถูกจองไปแล้วกี่ครั้ง (รถที่ถูกใช้งานมากที่สุด)"></a><br>
+        <a href="query4.php"><input type="submit" value="query รายได้ในแต่ละเดือน"></a><br>
+        <a href="test1.php"><input type="submit" value="รายชื่อ Admin"></a><br>
+        <a href="login.php"><input type='submit' value="Exit"></a>
+    </body>
+
+
+
+    </html>
+<?php } else if ($_SESSION['userid'] !== 15 || $_SESSION['userid'] !== 78 || $_SESSION['userid'] !== 79){ 
+    header("location:index.php");
+}
+
+
+?>
+ 
+    
+    

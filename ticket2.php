@@ -1,30 +1,9 @@
-<!-- <?php 
-//include "db2.php" ?>
 <?php
-
-    // $stmt = $pdo->prepare("INSERT INTO tickets(cus_id, des_id, location_id, depart_date) VALUES (?,?,?,?)");
-    // $stmt->bindParam(1, $_GET["cus_id"]);
-    // $stmt->bindParam(2, $_POST["des_id"]);
-    // $stmt->bindParam(3, $_POST["location_id"]);
-    // $stmt->bindParam(4, $_POST["depart_date"]);
-    // $stmt->execute(); // เริ่มเพิ่มข้อมูล
-    // $ticket_id = $pdo->lastInsertId();
-    
-    // header("location: bustime.php?ticket_id=" . $ticket_id );
-?>
-<html>
-<head><meta charset="UTF-8"></head>
-<body>
-    
-</body>
-</html> -->
-
-
-<?php
+ob_start();
 session_start();
 include ("db2.php");
 if(!isset($_SESSION['userid'])){
-    header("location:login.php"); //ถ้าเข้าแบบ pathname จะเด้งไปหน้า login.php
+    header("Location:login.php"); //ถ้าเข้าแบบ pathname จะเด้งไปหน้า login.php
 }else{
     $sql = mysqli_query($dbcon,"SELECT * FROM customers WHERE cus_id='" . $_SESSION['userid'] . "'");
     $row = mysqli_fetch_array($sql);
@@ -78,20 +57,21 @@ if(!isset($_SESSION['userid'])){
 </head>
 
 <body>
-    <div class="nav">
-    <nav>
-        <a href="#" style="color: white;">RayongTransport</a>
-        <ul>
-            User : <?= $row['fname']; ?>
-            <li><a href="index.php">หน้าหลัก</a></li>
-            <li class="li2"><a href="#">ซื้อตั๋ว</a></li>
-            <li><a href="logout.php">ออกจากระบบ</a></li>
-        </ul>
-    </nav><br>
-    </div>
+
+        <nav>
+            <a href="index.php" style="color: white;">RayongTransport</a>
+            <ul>
+                User : <?= $row['fname']; ?>
+                <li><a href="index.php">หน้าหลัก</a></li>
+                <li class="li2"><a href="#">ซื้อตั๋ว</a></li>
+                <li><a href="logout.php">ออกจากระบบ</a></li>
+            </ul>
+        </nav><br>
 
 
-    <div class="ticket2">
+
+
+    <section>
         <h1>Detail : </h1>
         <?php
             echo "ชื่อ :" . $row['fname'] . "<br>";
@@ -129,54 +109,60 @@ if(!isset($_SESSION['userid'])){
         <h1>เลือกรถ : </h1>
         <?php 
         
-      
-            $sql = mysqli_query($dbcon,"SELECT
-                                        cars.car_id AS car_id,
-                                        cars.license_plate AS license_plate,
-                                        cars.depart_time AS depart_time,
-                                        cars.arrival_time AS arrival_time,
-                                        cars.price AS price,
-                                        COUNT(tickets.car_id) AS count
-                                        FROM cars
-                                        LEFT JOIN tickets ON cars.car_id = tickets.car_id
+
+        $sql = mysqli_query($dbcon,"SELECT cars.car_id AS car_id, 
+                                        cars.license_plate AS license_plate, 
+                                        cars.depart_time AS depart_time, 
+                                        cars.arrival_time AS arrival_time, 
+                                        cars.price AS price, 
+                                        COUNT(tickets.car_id) AS count 
+                                        FROM cars 
+                                        LEFT JOIN tickets 
+                                        ON cars.car_id = tickets.car_id AND tickets.depart_date = '$departDate' 
                                         WHERE cars.group = $locationId 
-                                        GROUP BY cars.car_id, cars.license_plate, cars.depart_time, cars.arrival_time, cars.price;");
-                                        
-            while ($row = mysqli_fetch_array($sql)):?> 
-                <form action="insert-data.php" method="POST"><?php
+                                        GROUP BY cars.car_id, cars.license_plate, cars.depart_time, cars.arrival_time, cars.price");
+                                                                        
+            while ($row = mysqli_fetch_array($sql)):?>
+        <form action="insert-data.php" method="POST"><?php
                     $count = $row['count'];
                     $car_id = $row['car_id']; 
                     $depart_time = $row['depart_time']; 
                     $arrival_time = $row['arrival_time']; 
                     $price = $row['price'];
-
-                    echo "<p> RayongTransport </p>";
-                    echo "เลขรถ : " . $row['car_id'] . "<br>";
-                
-                    echo $row['license_plate']. "<br>";
-                    echo $row['depart_time']. "<br>";
-                    echo $row['arrival_time']. "<br>";
-                    echo "<b>เหลือที่นั่งอยู่: $count /10</b><br>";
-                    echo $row['price']. "<br>";
+                    if($count!=10){
+                        echo "<p> RayongTransport </p>";
+                        echo "เลขรถ : " . $row['car_id'] . "<br>";
+                        echo "ทะเบียนรถ : " . $row['license_plate']. "<br>";
+                        echo "เวลาขึ้นรถ : " . $row['depart_time']. "<br>";
+                        echo "เวลาถึง : " . $row['arrival_time']. "<br>";
+                        echo "<b>เหลือที่นั่งอยู่: $count /10</b><br>";
+                        echo $row['price']. "<br>";
+                        
+                        echo "<input type='hidden' name='car_id' value='$car_id'>";
+                        echo "<input type='hidden' name='depart_time' value='$depart_time'>";
+                        echo "<input type='hidden' name='arrival_time' value='$arrival_time'>";
+                        echo "<input type='hidden' name='price' value='$price'>";
+                        echo "<input type='hidden' name='location_id' value='" . $_SESSION['location_id'] . "'>";
+                        echo "<input type='hidden' name='des_id' value='" . $_SESSION['des_id'] . "'>";
+                        echo "<input type='hidden' name='depart_date' value='" . $_SESSION['depart_date'] . "'>";
+                        echo "<input type='submit' value='เลือก'><br><br>";
+                        echo "<hr>";  
+                       
+                    }
                     
-                    echo "<input type='hidden' name='car_id' value='$car_id'>";
-                    echo "<input type='hidden' name='depart_time' value='$depart_time'>";
-                    echo "<input type='hidden' name='arrival_time' value='$arrival_time'>";
-                    echo "<input type='hidden' name='price' value='$price'>";
-                    echo "<input type='hidden' name='location_id' value='" . $_SESSION['location_id'] . "'>";
-                    echo "<input type='hidden' name='des_id' value='" . $_SESSION['des_id'] . "'>";
-                    echo "<input type='hidden' name='depart_date' value='" . $_SESSION['depart_date'] . "'>";
-                    echo "<input type='submit' value='เลือก'><br><br>";
                     ?>
+
             
-                    <hr>
-                </form>
-            <?php endwhile ?>
-        </div>
+        </form>
+        <?php endwhile ?>
+    </section>
 
 </body>
 
 
 </html>
 
-<?php } ?>
+<?php } 
+ob_end_flush();
+
+?>

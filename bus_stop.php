@@ -10,7 +10,7 @@
 
 <body>
     <header>
-    <a href="#" style="color: white;">RayongTransport</a>
+    <a href="index.php" style="color: white;">RayongTransport</a>
         <ul>
             <li><a href="index.php">หน้าหลัก</a></li>
             <li><a href="logout.php">ออกจากระบบ</a></li>

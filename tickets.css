@@ -34,7 +34,7 @@ ul li:last-child:hover a {
 }
 
 
-.container {
+section {
     background-color: #888888e5;
     padding: 50px;
     border: 2px solid black;
@@ -45,7 +45,7 @@ ul li:last-child:hover a {
 
 
 @media screen and (max-width: 480px) {
-    div.nav{
+    nav{
         background-color: #4d4d4d;
     }
     ul,ul>a{
@@ -76,7 +76,7 @@ ul li:last-child:hover a {
     
 }
 @media screen and (min-width: 481px) and (max-width: 980px) {
-    div.nav{
+    nav{
         background-color: #4d4d4d;
     }
     ul,ul>a{
